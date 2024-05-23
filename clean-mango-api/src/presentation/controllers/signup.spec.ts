@@ -1,10 +1,7 @@
 /* eslint-disable prettier/prettier */
-import { MissingParamError } from '../errors/missing-param-error'
-import { InvalidParamError } from '../errors/invalid-param-error'
 import { EmailValidator } from '../protocols/email-validator'
 import { SignUpController } from './signup'
-import { ServerError } from '../errors/server-error'
-
+import { MissingParamError, InvalidParamError, ServerError } from '../errors'
 interface SutTypes {
   sut: SignUpController
   emailValidatorStub: EmailValidator
