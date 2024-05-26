@@ -16,6 +16,7 @@
   "license": "ISC",
   "devDependencies": {
     "@rocketseat/eslint-config": "^2.2.2",
+    "@types/bcrypt": "^5.0.2",
     "@types/jest": "^29.5.12",
     "@types/node": "^20.12.12",
     "@types/validator": "^13.11.10",
@@ -28,6 +29,7 @@
     "typescript": "^5.4.5"
   },
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "validator": "^13.12.0"
   }
 }
