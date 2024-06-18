@@ -2,8 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.makeSignInController = void 0;
 const bcrypt_adapter_1 = require("@/infra/cryptography/bcrypt-adapter");
-const not_found_error_1 = require("../errors/not-found-error");
-const http_helper_1 = require("../helpers/http-helper");
+const not_found_error_1 = require("@/presentation/errors/not-found-error");
+const http_helper_1 = require("@/presentation/helpers/http-helper");
 const prisma_account_sign_in_repository_1 = require("@/infra/database/repositories/prisma-account-sign-in-repository");
 const schemas_1 = require("@/main/schemas");
 const jwt_adapter_1 = require("@/infra/cryptography/jwt-adapter");

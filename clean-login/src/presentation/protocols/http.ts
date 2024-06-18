@@ -4,5 +4,7 @@ export interface HttpResponse {
 }
 
 export interface HttpRequest {
+  userId: string
   body?: any
+  headers?: any
 }

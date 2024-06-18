@@ -1,6 +1,5 @@
 import { Controller } from '@/presentation/protocols/controller'
 import { HttpRequest, HttpResponse } from '@/presentation/protocols/http'
-import { AddAccount } from '@/domain/usecases/add-account'
 import {
   badRequest,
   conflict,
@@ -12,10 +11,7 @@ import { PrismaAccountAddRepository } from '@/infra/database/repositories/prisma
 import { EmailAlreadyExists } from '@/presentation/errors/email-already-exists'
 
 class SignUpController implements Controller {
-  constructor(
-    private readonly addAccount: AddAccount,
-    private readonly accountRepository: PrismaAccountAddRepository
-  ) {}
+  constructor(private readonly accountRepository: PrismaAccountAddRepository) {}
 
   async handle(httpRequest: HttpRequest): Promise<HttpResponse> {
     const validatedBody = SignUpSchema.parse(httpRequest.body)
@@ -25,19 +21,16 @@ class SignUpController implements Controller {
       return badRequest(new InvalidParamError('passwordConfirmation'))
     }
 
-    if (await this.accountRepository.verifyEmail(email)) {
+    const verifyEmail = await this.accountRepository.verifyEmail(email)
+    if (verifyEmail) {
       return conflict(new EmailAlreadyExists())
     }
 
-    return created(await this.addAccount.add({ name, email, password }))
+    return created(await this.accountRepository.add({ name, email, password }))
   }
 }
 
 export const makeSignUpController = (): SignUpController => {
   const prismaAccountAddRepository = new PrismaAccountAddRepository()
-  const prismaVerifyEmailRepository = new PrismaAccountAddRepository()
-  return new SignUpController(
-    prismaAccountAddRepository,
-    prismaVerifyEmailRepository
-  )
+  return new SignUpController(prismaAccountAddRepository)
 }

@@ -8,9 +8,6 @@ class DbSignAccount {
     findByEmail(email) {
         return this.signAccountRepository.findByEmail(email);
     }
-    findById(id) {
-        return this.signAccountRepository.findById(id);
-    }
 }
 exports.DbSignAccount = DbSignAccount;
 //# sourceMappingURL=db-sign-account.js.map

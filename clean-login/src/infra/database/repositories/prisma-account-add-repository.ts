@@ -12,7 +12,6 @@ export class PrismaAccountAddRepository implements AddAccountRepository {
       },
     })
   }
-
   async add(accountData: AddAccountModel): Promise<AccountModel> {
     const salt = 12
     const hashedPassword = await new BcryptAdapter(salt).hash(

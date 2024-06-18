@@ -13,13 +13,6 @@ class PrismaAccountSignInRepository {
             },
         });
     }
-    async findById(id) {
-        return database_1.default.user.findUnique({
-            where: {
-                id,
-            },
-        });
-    }
 }
 exports.PrismaAccountSignInRepository = PrismaAccountSignInRepository;
 //# sourceMappingURL=prisma-account-sign-in-repository.js.map

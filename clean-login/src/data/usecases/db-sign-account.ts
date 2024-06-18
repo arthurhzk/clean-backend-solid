@@ -6,7 +6,4 @@ export class DbSignAccount implements SignAccountRepository {
   findByEmail(email: string): Promise<SignAccountModel> {
     return this.signAccountRepository.findByEmail(email)
   }
-  findById(id: string): Promise<SignAccountModel> {
-    return this.signAccountRepository.findById(id)
-  }
 }

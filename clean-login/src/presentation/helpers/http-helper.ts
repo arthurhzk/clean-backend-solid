@@ -1,5 +1,5 @@
-import { ServerError } from '../errors/server-error'
-import { HttpResponse } from '../protocols/http'
+import { ServerError } from '@/presentation/errors/server-error'
+import { HttpResponse } from '@/presentation/protocols/http'
 
 export const badRequest = (error: Error): HttpResponse => ({
   statusCode: HttpStatusCode.badRequest,
@@ -33,6 +33,15 @@ export const notFound = (error: Error): HttpResponse => ({
 
 export const unauthorized = (error: Error): HttpResponse => ({
   statusCode: HttpStatusCode.unauthorized,
+  body: error,
+})
+
+export const noContent = (): HttpResponse => ({
+  statusCode: HttpStatusCode.noContent,
+  body: null,
+})
+export const forbidden = (error: Error): HttpResponse => ({
+  statusCode: HttpStatusCode.forbidden,
   body: error,
 })
 

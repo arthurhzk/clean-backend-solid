@@ -11,12 +11,4 @@ export class PrismaAccountSignInRepository implements SignAccountRepository {
       },
     })
   }
-
-  async findById(id: string) {
-    return prisma.user.findUnique({
-      where: {
-        id,
-      },
-    })
-  }
 }
